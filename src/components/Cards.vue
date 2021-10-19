@@ -2,8 +2,11 @@
   <div class="hello">
     <h1>Cards</h1>
     <div class="cards">
-      {{ characters }}
-      <Card />
+      
+      <Card v-for="(charactersResult, index) in charactersResults"
+                 :key="index"
+                 :charactersResult="charactersResult"
+                 />
       
     </div>
   </div>
@@ -17,7 +20,7 @@ import * as types from '@/store/types';
 export default {
   data () {
     return {
-      id: ''
+    // lastEpisode: ''
     }
   },
   components: {
@@ -29,7 +32,16 @@ export default {
   computed: {
     ...mapGetters ({
       characters: types.CHARACTERS,
-    })
+    }),
+    charactersResults(){
+      return this.characters?.results;
+    },
+    // lastEpisode(){
+    //   // let arr =[]
+    //   // let arr = this.characters?.results?.episode;
+    //   console.log('40', this.characters?.results)
+    // // return this.characters?.results
+    // },
   },
   methods: {
     ...mapActions ({
