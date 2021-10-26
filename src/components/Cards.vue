@@ -7,34 +7,48 @@
                  :key="index"
                  :charactersResult="charactersResult"
                  />
+       
+            <Pagination
+              :current-page="currentPage"
+              class="my-4"
+              :pages="pagesLength"
+            ></Pagination>
+     
       
     </div>
   </div>
 </template>
 
 <script>
-import Card from './Card.vue'
+import Card from './Card.vue';
+import Pagination from './Pagination.vue';
 import { mapActions, mapGetters } from 'vuex';
 import * as types from '@/store/types';
 
 export default {
   data () {
     return {
-    // lastEpisode: ''
+    // currentPage: 5
     }
   },
   components: {
-    Card
+    Card,
+    Pagination,
   },
   props: {
     // msg: String
   },
   computed: {
     ...mapGetters ({
-      characters: types.CHARACTERS,
+      charactersResults: types.CHARACTERS,
+      info: types.INFO,
+      currentPage: types.GET_CURRENT_PAGE
     }),
-    charactersResults(){
-      return this.characters?.results;
+    // charactersResults(){
+    //   return this.characters?.results;
+    // },
+    pagesLength(){
+      return this.info?.pages;
     },
     // lastEpisode(){
     //   // let arr =[]
