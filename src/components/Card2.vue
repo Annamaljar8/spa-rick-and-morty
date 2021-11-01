@@ -2,13 +2,13 @@
   <div>
     <h1>Card</h1>
     <div class="card">
-      <img :src="charactersResult.image" :alt="charactersResult.name" class="card-img">
-      <div>{{ charactersResult.id }}</div>
-      <div>{{ charactersResult.name }}</div>
-      <div>{{ charactersResult.gender }}</div>
-      <div>{{ charactersResult.species }}</div>
+      <img :src="arrFavorite.image" :alt="arrFavorite.name" class="card-img">
+      <div>{{ arrFavorite.id }}</div>
+      <div>{{ arrFavorite.name }}</div>
+      <div>{{ arrFavorite.gender }}</div>
+      <div>{{ arrFavorite.species }}</div>
       <div>{{ lastEpisode }}</div>
-      <button @click="addToFavorite(charactersResult)">Add to favorite</button>
+      <!-- <button @click="addToFavorite(charactersResult)">Add to favorite</button> -->
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     //   type: Array,
     //   default: []
     // },
-  charactersResult: {
+  arrFavorite: {
       type: Object,
       default: () => ({
         image: '',
@@ -37,18 +37,18 @@ export default {
   },
   computed: {
     lastEpisode() {
-      return this.charactersResult.episode[this.charactersResult.episode.length - 1] || ''
+      return this.arrFavorite.episode[this.arrFavorite.episode.length - 1] || ''
     }
   },
   methods: {
-    ...mapMutations ({
-      setFavorite: types.SET_FAVORITE,
-    }),
-    addToFavorite(){
-      this.setFavorite(JSON.parse(JSON.stringify(this.charactersResult)));
-      // console.log(this.charactersResult)
-      console.log("1111", JSON.parse(JSON.stringify(this.charactersResult)));
-    }
+    // ...mapMutations ({
+    //   setFavorite: types.SET_FAVORITE,
+    // }),
+    // addToFavorite(){
+    //   this.setFavorite(this.charactersResult);
+    //   // console.log(this.charactersResult)
+    //   console.log("1111", JSON.parse(JSON.stringify(this.charactersResult)));
+    // }
   }
 }
 </script>

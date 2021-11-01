@@ -3,7 +3,7 @@
     <h1>Pagination</h1>
     
     <div>
-      <button >Prev </button>
+      <button @click="prevPage">Prev </button>
       <button  v-for="(currentPage, index) in pages"
                  :key="index"
                  :currentPage="currentPage"
@@ -11,7 +11,7 @@
                  @click="setCurrentPage(currentPage)">
       {{ currentPage }}
       </button>
-      <button>Next</button>
+      <button @click="nextPage">Next</button>
       <div>{{ currentPage }}</div>
     </div>
 
@@ -35,17 +35,31 @@ export default {
   },
   computed: {
    ...mapGetters ({
-      
+      getNextPage: types.GET_NEXT_PAGE,
+      getPrevPage: types.GET_PREV_PAGE
     }),
   },
   methods: {
     ...mapActions({
-      setCurrentPage: types.SET_CURRENT_PAGE
+      setCurrentPage: types.SET_CURRENT_PAGE,
     }),
     activeClass(key) {
-     return ((key + 1) === this.currentPage) ? true : false;
-     },
-     
+      return ((key + 1) === this.currentPage) ? true : false;
+    },
+    nextPage(){
+      if(this.getNextPage === null){
+        this.setCurrentPage(this.currentPage)
+      } else {
+        this.setCurrentPage(this.currentPage+1)
+      }
+    }, 
+     prevPage(){
+      if(this.getPrevPage === null){
+        this.setCurrentPage(this.currentPage)
+      } else {
+        this.setCurrentPage(this.currentPage-1)
+      }
+    }
   }
 }
 </script>
