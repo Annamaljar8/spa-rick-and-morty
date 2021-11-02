@@ -45,7 +45,7 @@ export default {
       setFavorite: types.SET_FAVORITE,
     }),
     addToFavorite(){
-      this.setFavorite(JSON.parse(JSON.stringify(this.charactersResult)));
+      this.setFavorite(this.charactersResult);
       // console.log(this.charactersResult)
       console.log("1111", JSON.parse(JSON.stringify(this.charactersResult)));
     }

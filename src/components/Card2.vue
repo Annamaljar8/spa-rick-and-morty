@@ -8,7 +8,7 @@
       <div>{{ arrFavorite.gender }}</div>
       <div>{{ arrFavorite.species }}</div>
       <div>{{ lastEpisode }}</div>
-      <!-- <button @click="addToFavorite(charactersResult)">Add to favorite</button> -->
+      <button @click="deleteFromFavorite(arrFavorite)">Add to favorite</button>
     </div>
   </div>
 </template>
@@ -41,14 +41,14 @@ export default {
     }
   },
   methods: {
-    // ...mapMutations ({
-    //   setFavorite: types.SET_FAVORITE,
-    // }),
-    // addToFavorite(){
-    //   this.setFavorite(this.charactersResult);
-    //   // console.log(this.charactersResult)
-    //   console.log("1111", JSON.parse(JSON.stringify(this.charactersResult)));
-    // }
+    ...mapMutations ({
+      deleteFavorite: types.DELETE_FAVORITE,
+    }),
+    deleteFromFavorite(){
+      this.deleteFavorite(this.arrFavorite);
+      // console.log(this.charactersResult)
+      console.log("1111", JSON.parse(JSON.stringify(this.arrFavorite)));
+    }
   }
 }
 </script>

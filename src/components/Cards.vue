@@ -34,7 +34,7 @@ import * as types from '@/store/types';
 export default {
   data () {
     return {
-      allCharacter: false,
+      allCharacter: true,
       favorite: false
     }
   },
